@@ -1,0 +1,32 @@
+#gerador de senhas
+import os
+import random
+import string
+
+def main():
+    os.system('cls')
+    gerador()
+
+def gerador ():
+    print("Gerador de Senhas")
+    tamanho=int(input("Digite o tamanho que a senha deve ter: "))
+    caracteres =""
+
+    if input("Sua senha deve incluir letras minúsculas? (s/n): ").lower() == 's':	
+        caracteres += string.ascii_lowercase
+    if input("Sua senha deve incluir letras maiúsculas? (s/n): ").lower() == 's':
+        caracteres += string.ascii_uppercase
+    if input("Sua senha deve incluir números? (s/n): ").lower() == 's':
+        caracteres += string.digits
+    if input("Sua senha deve incluir caracteres especiais? (s/n): ").lower() == 's':
+        caracteres += string.punctuation
+    if not caracteres:
+        print("Você deve escolher pelo menos um tipo de caractere.")
+        return
+    
+    senha = ''.join(random.choice(caracteres) for _ in range(tamanho))
+    print(f"Sua senha gerada é: {senha}")
+    input("Pressione Enter para continuar...")
+
+if __name__ == "__main__":
+    main()
